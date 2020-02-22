@@ -1,0 +1,17 @@
+.label {
+  color: var(--color-orange);
+  border-bottom: 1px solid var(--color-white);
+}
+
+.label::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid var(--color-orange);
+  margin-bottom: -1px;
+  max-width: 112px;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: space-between;
+}

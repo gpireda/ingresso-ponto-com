@@ -1,25 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.module.css";
+
+import { Checkbox, Header, Layout, MoviePoster } from "./components";
+import { List } from "./views";
+
+import { movies, types } from "./mocks";
 
 function App() {
+  const [selected, setSelected] = useState([0]);
+
+  const handleCheckboxToggle = (e: any, id: number) => {
+    if (e.target.checked) {
+      setSelected([...selected, id]);
+      return null;
+    }
+
+    setSelected(selected.filter(item => item !== id));
+  };
+
+  const renderCheckbox = (type: any) => (
+    <Checkbox
+      checked={selected.some(item => item === type.id)}
+      key={type.type}
+      onChange={handleCheckboxToggle}
+      type={type}
+    />
+  );
+
+  const renderMoviePoster = (movie: any) => (
+    <MoviePoster key={movie.id} movie={movie} />
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+
+      <Layout>
+        <section className="movies-filters">
+          <h2>Filmes</h2>
+
+          {types.map(renderCheckbox)}
+        </section>
+
+        <List
+          items={movies}
+          label="Em cartaz"
+          renderListItem={renderMoviePoster}
+        />
+      </Layout>
+    </>
   );
 }
 
