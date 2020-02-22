@@ -2,6 +2,18 @@ picture {
   cursor: pointer;
   max-width: 200px;
   position: relative;
+  overflow: hidden !important;
+
+  img {
+    transition-property: transform;
+    transition-duration: 0.6s;
+    transform-origin: center 250px;
+
+    &:hover {
+      transform: scale(1.2);
+      overflow: hidden !important;
+    }
+  }
 
   .genresContainer {
     display: flex;
