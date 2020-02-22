@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./MoviePoster.module.css";
+import styles from "./MoviePoster.module.scss";
 
 interface IMoviePosterProps {
   movie: any;

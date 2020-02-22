@@ -1,0 +1,40 @@
+picture {
+  cursor: pointer;
+  max-width: 200px;
+  position: relative;
+
+  .genresContainer {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-white);
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 50px;
+    left: var(--spacing-small);
+
+    .genre {
+      color: var(--color-dark-gray);
+      font-size: 13;
+      font-weight: 400;
+      padding: var(--spacing-smallest);
+      width: fit-content;
+
+      &:not(:last-of-type) {
+        margin-bottom: var(--spacing-small);
+      }
+
+      &.family {
+        background: var(--color-light-green);
+      }
+
+      &.highlight {
+        background: var(--color-orange);
+      }
+    }
+  }
+
+  .figcaption {
+    color: var(--color-white);
+    margin-top: var(--spacing-small);
+  }
+}

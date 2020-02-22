@@ -4,7 +4,7 @@ import Local from "../../icons/Local";
 import Logo from "../../icons/Logo";
 import MagnifyingGlass from "../../icons/MagnifyingGlass";
 
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 
 interface IHeaderProps {
   currentLocation?: string;

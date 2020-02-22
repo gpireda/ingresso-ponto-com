@@ -1,0 +1,42 @@
+header {
+  background: rgba(0, 0, 0, 0.8);
+
+  .headerWrapper {
+    margin: 0 auto;
+    max-width: var(--layout-width);
+    padding: var(--spacing-small);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logoWrapper {
+      width: 250px;
+    }
+
+    .searchAndLocalWrapper {
+      color: var(--color-white);
+      display: inline-flex;
+      align-items: center;
+
+      .searchInput {
+        height: 24px;
+        border-radius: 4px;
+        outline: none;
+        text-indent: 4px;
+      }
+
+      .magnifyingGlassWrapper {
+        cursor: pointer;
+        width: var(--spacing-large);
+      }
+
+      .locationWrapper {
+        width: var(--spacing-large);
+
+        .location {
+          margin-left: var(--spacing-large);
+        }
+      }
+    }
+  }
+}
