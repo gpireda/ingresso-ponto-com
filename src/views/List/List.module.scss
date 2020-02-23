@@ -3,7 +3,7 @@
   border-bottom: 1px solid var(--color-white);
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     border-bottom: 1px solid var(--color-orange);
     margin-bottom: -1px;
@@ -14,4 +14,10 @@
 .listContainer {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .listContainer {
+    flex-direction: column;
+  }
 }

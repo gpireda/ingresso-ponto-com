@@ -52,3 +52,21 @@ picture {
     margin-top: var(--spacing-small);
   }
 }
+
+@media (max-width: 768px) {
+  picture {
+    max-width: 100%;
+
+    a {
+      display: inline-flex;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .figcaption {
+    margin: var(--spacing-small) 0;
+  }
+}
