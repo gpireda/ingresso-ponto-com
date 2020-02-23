@@ -9,16 +9,20 @@ import { movies, types } from "./mocks";
 function App() {
   const [selected, setSelected] = useState([0]);
 
-  const handleCheckboxToggle = (e: any, id: number) => {
+  const handleCheckboxToggle = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
     if (e.target.checked) {
       setSelected([...selected, id]);
       return null;
     }
 
     setSelected(selected.filter(item => item !== id));
+    return null;
   };
 
-  const renderCheckbox = (type: any) => (
+  const renderCheckbox = (type: FilterType) => (
     <Checkbox
       checked={selected.some(item => item === type.id)}
       key={type.type}
@@ -27,7 +31,7 @@ function App() {
     />
   );
 
-  const renderMoviePoster = (movie: any) => (
+  const renderMoviePoster = (movie: Movie) => (
     <MoviePoster key={movie.id} movie={movie} />
   );
 

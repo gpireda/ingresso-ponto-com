@@ -1,4 +1,44 @@
-label {
-  color: var(--color-white);
+span {
   cursor: pointer;
+
+  label {
+    display: inline-flex;
+    color: var(--color-white);
+    cursor: pointer;
+    user-select: none;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    div {
+      width: 20px;
+      height: 20px;
+      background: var(--color-white);
+      margin-right: 10px;
+      position: relative;
+    }
+
+    .checked {
+      background: #f35429;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 9px;
+        background: white;
+        width: 2px;
+        height: 2px;
+        box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white,
+          4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+        transform: rotate(45deg);
+      }
+    }
+
+    span {
+      margin-right: 10px;
+    }
+  }
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./Checkbox.module.scss";
+import styles from "./Checkbox.module.scss";
 
 interface ICheckboxProps {
   checked: boolean;
-  onChange: any;
-  type: any;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>, id: number) => null;
+  type: FilterType;
 }
 
 const Checkbox: React.FC<ICheckboxProps> = ({ checked, onChange, type }) => (
@@ -18,7 +18,8 @@ const Checkbox: React.FC<ICheckboxProps> = ({ checked, onChange, type }) => (
         onChange={e => onChange(e, type.id)}
         value={type.type}
       />
-      {type.type}
+      <div className={checked ? styles.checked : ""} />
+      <span>{type.type}</span>
     </label>
   </span>
 );

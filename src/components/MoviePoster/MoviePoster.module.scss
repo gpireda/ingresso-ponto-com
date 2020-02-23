@@ -4,43 +4,45 @@ picture {
   position: relative;
   overflow: hidden !important;
 
-  img {
-    transition-property: transform;
-    transition-duration: 0.6s;
-    transform-origin: center 250px;
+  a {
+    img {
+      transition-property: transform;
+      transition-duration: 0.6s;
+      transform-origin: center 297px;
 
-    &:hover {
-      transform: scale(1.2);
-      overflow: hidden !important;
+      &:hover {
+        transform: scale(1.2);
+        overflow: hidden !important;
+      }
     }
-  }
 
-  .genresContainer {
-    display: flex;
-    flex-direction: column;
-    color: var(--color-white);
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 50px;
-    left: var(--spacing-small);
+    .tagsContainer {
+      display: flex;
+      flex-direction: column;
+      color: var(--color-white);
+      text-transform: uppercase;
+      position: absolute;
+      bottom: 50px;
+      left: var(--spacing-small);
 
-    .genre {
-      color: var(--color-dark-gray);
-      font-size: 13;
-      font-weight: 400;
-      padding: var(--spacing-smallest);
-      width: fit-content;
+      .tag {
+        color: var(--color-white);
+        font-size: 13;
+        font-weight: 400;
+        padding: var(--spacing-smallest);
+        width: fit-content;
 
-      &:not(:last-of-type) {
-        margin-bottom: var(--spacing-small);
-      }
+        // &:not(:last-of-type) {
+        //   margin-bottom: var(--spacing-small);
+        // }
 
-      &.family {
-        background: var(--color-light-green);
-      }
+        &.family {
+          background: var(--color-light-green);
+        }
 
-      &.highlight {
-        background: var(--color-orange);
+        &.highlight {
+          background: var(--color-orange);
+        }
       }
     }
   }

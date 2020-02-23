@@ -3,9 +3,9 @@ import React from "react";
 import styles from "./List.module.scss";
 
 interface IListProps {
-  items: any;
+  items: any[];
   label: string;
-  renderListItem: any;
+  renderListItem: (item: any) => React.ReactNode;
 }
 
 const List: React.FC<IListProps> = ({ items, label, renderListItem }) => (
