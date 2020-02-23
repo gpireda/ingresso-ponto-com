@@ -1,5 +1,5 @@
-@import "./utils/colors.module.css";
-@import "./utils/dimensions.module.css";
+@import './utils/colors.module.css';
+@import './utils/dimensions.module.css';
 
 html {
   box-sizing: border-box;
