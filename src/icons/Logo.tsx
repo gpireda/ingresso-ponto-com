@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Logo = () => (
   <svg viewBox="0 0 254 40" id="icon-logo">
@@ -57,6 +57,6 @@ const Logo = () => (
       d="M23.7,15.6l-7.5,0l0,15.7c0,1.2,0.8,2.1,1.9,2.1l5.6,0L23.7,15.6z"
     ></path>
   </svg>
-);
+)
 
-export default Logo;
+export default Logo

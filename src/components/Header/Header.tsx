@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import Local from "../../icons/Local";
-import Logo from "../../icons/Logo";
-import MagnifyingGlass from "../../icons/MagnifyingGlass";
+import Local from '../../icons/Local'
+import Logo from '../../icons/Logo'
+import MagnifyingGlass from '../../icons/MagnifyingGlass'
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss'
 
 interface IHeaderProps {
-  currentLocation?: string;
+  currentLocation?: string
 }
 
-const Header: React.FC<IHeaderProps> = ({ currentLocation = "São Paulo" }) => {
-  const [searchText, setSearchText] = useState("");
-  const [isSearchVisible, setSearchVisible] = useState(true);
+const Header: React.FC<IHeaderProps> = ({
+  currentLocation = 'São Paulo',
+}: IHeaderProps) => {
+  const [searchText, setSearchText] = useState('')
+  const [isSearchVisible, setSearchVisible] = useState(true)
 
   return (
     <header>
@@ -29,7 +31,7 @@ const Header: React.FC<IHeaderProps> = ({ currentLocation = "São Paulo" }) => {
               onChange={e => setSearchText(e.target.value)}
               onKeyDown={({ keyCode }) => {
                 if (keyCode === 13) {
-                  window.alert("trigger search");
+                  window.alert('trigger search')
                 }
               }}
               type="text"
@@ -39,10 +41,10 @@ const Header: React.FC<IHeaderProps> = ({ currentLocation = "São Paulo" }) => {
           <div
             className={styles.magnifyingGlassWrapper}
             onClick={() => {
-              setSearchVisible(!isSearchVisible);
+              setSearchVisible(!isSearchVisible)
 
               if (searchText) {
-                window.alert("trigger search");
+                window.alert('trigger search')
               }
             }}
           >
@@ -56,7 +58,7 @@ const Header: React.FC<IHeaderProps> = ({ currentLocation = "São Paulo" }) => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

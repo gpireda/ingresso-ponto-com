@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import styles from "./MoviePoster.module.scss";
+import styles from './MoviePoster.module.scss'
 
 interface IMoviePosterProps {
-  movie: Movie;
+  movie: Movie
 }
 
 const renderTags = (movie: Movie) => (
@@ -18,11 +18,13 @@ const renderTags = (movie: Movie) => (
       </span>
     ))}
   </div>
-);
+)
 
-const MoviePoster: React.FC<IMoviePosterProps> = ({ movie }) => {
-  const hasTrailer = movie.trailers?.length > 0;
-  const hasTags = movie.completeTags?.length > 0;
+const MoviePoster: React.FC<IMoviePosterProps> = ({
+  movie,
+}: IMoviePosterProps) => {
+  const hasTrailer = movie.trailers?.length > 0
+  const hasTags = movie.completeTags?.length > 0
 
   return (
     <picture key={movie.id}>
@@ -37,7 +39,7 @@ const MoviePoster: React.FC<IMoviePosterProps> = ({ movie }) => {
 
       <figcaption className={styles.figcaption}>{movie.title}</figcaption>
     </picture>
-  );
-};
+  )
+}
 
-export default MoviePoster;
+export default MoviePoster

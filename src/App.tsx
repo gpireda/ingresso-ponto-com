@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import "./App.module.css";
+import React, { useState } from 'react'
+import './App.module.css'
 
-import { Checkbox, Header, Layout, MoviePoster } from "./components";
-import { List } from "./views";
+import { Checkbox, Header, Layout, MoviePoster } from './components'
+import { List } from './views'
 
-import { movies, types } from "./mocks";
+import { movies, types } from './mocks'
 
 function App() {
-  const [selected, setSelected] = useState([0]);
+  const [selected, setSelected] = useState([0])
 
   const handleCheckboxToggle = (
     e: React.ChangeEvent<HTMLInputElement>,
-    id: number
+    id: number,
   ) => {
     if (e.target.checked) {
-      setSelected([...selected, id]);
-      return null;
+      setSelected([...selected, id])
+      return null
     }
 
-    setSelected(selected.filter(item => item !== id));
-    return null;
-  };
+    setSelected(selected.filter(item => item !== id))
+    return null
+  }
 
   const renderCheckbox = (type: FilterType) => (
     <Checkbox
@@ -29,11 +29,11 @@ function App() {
       onChange={handleCheckboxToggle}
       type={type}
     />
-  );
+  )
 
   const renderMoviePoster = (movie: Movie) => (
     <MoviePoster key={movie.id} movie={movie} />
-  );
+  )
 
   return (
     <>
@@ -53,7 +53,7 @@ function App() {
         />
       </Layout>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

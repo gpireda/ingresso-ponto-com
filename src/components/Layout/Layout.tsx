@@ -1,9 +1,13 @@
-import React from "react";
+import React from 'react'
 
-import styles from "./Layout.module.scss";
+import styles from './Layout.module.scss'
 
-const Layout: React.FC = ({ children }) => (
+interface ILayoutProps {
+  children: React.ReactNode
+}
+
+const Layout: React.FC<ILayoutProps> = ({ children }: ILayoutProps) => (
   <div className={styles.mainWrapper}>{children}</div>
-);
+)
 
-export default Layout;
+export default Layout
