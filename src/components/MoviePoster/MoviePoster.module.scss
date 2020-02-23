@@ -3,6 +3,7 @@ picture {
   max-width: 200px;
   position: relative;
   overflow: hidden !important;
+  margin-top: 20px;
 
   a {
     img {
@@ -32,17 +33,13 @@ picture {
         padding: var(--spacing-smallest);
         width: fit-content;
 
-        // &:not(:last-of-type) {
-        //   margin-bottom: var(--spacing-small);
+        // &.family {
+        //   background: var(--color-light-green);
         // }
 
-        &.family {
-          background: var(--color-light-green);
-        }
-
-        &.highlight {
-          background: var(--color-orange);
-        }
+        // &.highlight {
+        //   background: var(--color-orange);
+        // }
       }
     }
   }
