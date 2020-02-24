@@ -1,0 +1,24 @@
+.movieDetailContainer {
+  display: flex;
+  margin-top: 20px;
+
+  .description {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .tags {
+      display: flex;
+      flex-direction: row;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    .synopsis {
+      margin-top: 10px;
+
+    }
+  }
+}

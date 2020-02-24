@@ -1,9 +1,10 @@
-picture {
+.picture {
   cursor: pointer;
   max-width: 200px;
   position: relative;
   overflow: hidden !important;
   margin-top: 20px;
+  margin-right: 4px;
 
   a {
     img {

@@ -1,45 +1,48 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Text } from 'components'
 
 import styles from './MoviePoster.module.scss'
 
 interface IMoviePosterProps {
-  movie: Movie
+  link?: string
+  movie: any
 }
 
 const renderTags = (movie: Movie) => (
   <div className={styles.tagsContainer}>
     {movie.completeTags.map((tag: any) => (
-      <span
+      <Text
         className={styles.tag}
         style={{ background: tag.background, color: tag.color }}
         key={tag.name}
       >
         {tag.name}
-      </span>
+      </Text>
     ))}
   </div>
 )
 
-const MoviePoster: React.FC<IMoviePosterProps> = ({
-  movie,
-}: IMoviePosterProps) => {
-  const hasTrailer = movie.trailers?.length > 0
+const renderBanner = (movie: Movie, width = '200px') => {
   const hasTags = movie.completeTags?.length > 0
 
   return (
-    <picture key={movie.id}>
-      <a
-        href={hasTrailer ? movie.trailers[0].url : undefined}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <img src={movie.url} alt={movie.title} width="200px" />
-        {hasTags && renderTags(movie)}
-      </a>
-
-      <figcaption className={styles.figcaption}>{movie.title}</figcaption>
-    </picture>
+    <React.Fragment key={movie.id}>
+      <img src={movie.images[0].url} alt={movie.title} width={width} />
+      {hasTags && renderTags(movie)}
+    </React.Fragment>
   )
 }
+
+const MoviePoster: React.FC<IMoviePosterProps> = ({
+  link,
+  movie,
+}: IMoviePosterProps) => (
+  <picture className={styles.picture} key={movie.id}>
+    <Link to={link || '#'}>{renderBanner(movie)}</Link>
+
+    <figcaption className={styles.figcaption}>{movie.title}</figcaption>
+  </picture>
+)
 
 export default MoviePoster

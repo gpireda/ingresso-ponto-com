@@ -1,4 +1,8 @@
-export { default as Checkbox } from "./Checkbox/Checkbox";
-export { default as Header } from "./Header/Header";
-export { default as Layout } from "./Layout/Layout";
-export { default as MoviePoster } from "./MoviePoster/MoviePoster";
+export { default as Checkbox } from './Checkbox/Checkbox'
+export { default as Header } from './Header/Header'
+export { default as Heading } from './Heading/Heading'
+export { default as Layout } from './Layout/Layout'
+export { default as List } from './List/List'
+export { default as MoviePoster } from './MoviePoster/MoviePoster'
+export { default as Text } from './Text/Text'
+export { default as Trailer } from './Trailer/Trailer'

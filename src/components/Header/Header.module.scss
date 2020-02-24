@@ -33,13 +33,21 @@ header {
         width: var(--spacing-large);
       }
 
-      .locationWrapper {
-        width: var(--spacing-large);
+      a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--color-white);
 
-        .location {
-          margin-left: var(--spacing-large);
+        .locationWrapper {
+          width: var(--spacing-large);
+
+          .location {
+            margin-left: var(--spacing-large);
+          }
         }
       }
+
     }
   }
 }

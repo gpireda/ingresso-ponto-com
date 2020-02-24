@@ -1,4 +1,5 @@
 interface FilterType {
-  id: number;
-  type: string;
+  alias: string
+  id: number
+  type: string
 }

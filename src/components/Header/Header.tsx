@@ -1,64 +1,61 @@
-import React, { useState } from 'react'
-
-import Local from '../../icons/Local'
-import Logo from '../../icons/Logo'
-import MagnifyingGlass from '../../icons/MagnifyingGlass'
+import Local from 'icons/Local'
+import Logo from 'icons/Logo'
+import MagnifyingGlass from 'icons/MagnifyingGlass'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Text } from 'components'
 
 import styles from './Header.module.scss'
 
 interface IHeaderProps {
   currentLocation?: string
+  locationSlug: string
+  onCurrentLocationToggle: () => void
+  onSearchChanged: (value: string) => void
+  searchText: string
 }
 
 const Header: React.FC<IHeaderProps> = ({
-  currentLocation = 'São Paulo',
-}: IHeaderProps) => {
-  const [searchText, setSearchText] = useState('')
-  const [isSearchVisible, setSearchVisible] = useState(true)
+  currentLocation,
+  locationSlug,
+  onCurrentLocationToggle,
+  onSearchChanged,
+  searchText,
+}: IHeaderProps) => (
+  <header>
+    <div className={styles.headerWrapper}>
+      <Link className={styles.logoWrapper} to={`/${locationSlug}`}>
+        <Logo />
+      </Link>
 
-  return (
-    <header>
-      <div className={styles.headerWrapper}>
-        <div className={styles.logoWrapper}>
-          <Logo />
+      <div className={styles.searchAndLocalWrapper}>
+        <input
+          className={styles.searchInput}
+          value={searchText}
+          onChange={e => {
+            onSearchChanged(e.target.value)
+          }}
+          type='text'
+        />
+
+        <div className={styles.magnifyingGlassWrapper}>
+          <MagnifyingGlass />
         </div>
 
-        <div className={styles.searchAndLocalWrapper}>
-          {isSearchVisible && (
-            <input
-              className={styles.searchInput}
-              value={searchText}
-              onChange={e => setSearchText(e.target.value)}
-              onKeyDown={({ keyCode }) => {
-                if (keyCode === 13) {
-                  window.alert('trigger search')
-                }
-              }}
-              type="text"
-            />
-          )}
-
-          <div
-            className={styles.magnifyingGlassWrapper}
-            onClick={() => {
-              setSearchVisible(!isSearchVisible)
-
-              if (searchText) {
-                window.alert('trigger search')
-              }
-            }}
-          >
-            <MagnifyingGlass />
-          </div>
-
-          <span className={styles.location}>{currentLocation}</span>
+        <Link
+          onClick={onCurrentLocationToggle}
+          to={`/${
+            locationSlug === 'sao-paulo' ? 'rio-de-janeiro' : 'sao-paulo'
+          }`}
+        >
+          <Text className={styles.location}>{currentLocation}</Text>
           <div className={styles.locationWrapper}>
             <Local />
           </div>
-        </div>
+        </Link>
       </div>
-    </header>
-  )
-}
+    </div>
+  </header>
+)
 
 export default Header

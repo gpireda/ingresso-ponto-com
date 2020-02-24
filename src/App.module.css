@@ -1,19 +1,18 @@
-@import './utils/colors.module.css';
-@import './utils/dimensions.module.css';
+@import './styles/colors.module.css';
+@import './styles/dimensions.module.css';
 
 html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Roboto;
 }
 
-body {
-  background: #333;
-}
-
+body,
 #root {
   background: #333;
 }
+
 
 h1,
 h2,

@@ -1,58 +1,51 @@
-import React, { useState } from 'react'
 import './App.module.css'
 
-import { Checkbox, Header, Layout, MoviePoster } from './components'
-import { List } from './views'
+import React, { useState } from 'react'
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom'
+import { slugify } from 'utils'
+import { MoviesList } from 'views'
 
-import { movies, types } from './mocks'
+import { Header, Layout } from './components'
 
-function App() {
-  const [selected, setSelected] = useState([0])
+const App = () => {
+  const [currentLocation, setStateLocation] = useState('São Paulo')
+  const [searchText, setSearchText] = useState('')
 
-  const handleCheckboxToggle = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    id: number,
-  ) => {
-    if (e.target.checked) {
-      setSelected([...selected, id])
-      return null
-    }
-
-    setSelected(selected.filter(item => item !== id))
-    return null
-  }
-
-  const renderCheckbox = (type: FilterType) => (
-    <Checkbox
-      checked={selected.some(item => item === type.id)}
-      key={type.type}
-      onChange={handleCheckboxToggle}
-      type={type}
-    />
-  )
-
-  const renderMoviePoster = (movie: Movie) => (
-    <MoviePoster key={movie.id} movie={movie} />
-  )
+  const locationSlug = slugify(currentLocation)
 
   return (
-    <>
-      <Header />
+    <Router>
+      <Header
+        currentLocation={currentLocation}
+        locationSlug={locationSlug}
+        onCurrentLocationToggle={() =>
+          setStateLocation(
+            currentLocation === 'São Paulo' ? 'Rio de Janeiro' : 'São Paulo',
+          )
+        }
+        onSearchChanged={value => setSearchText(value)}
+        searchText={searchText}
+      />
 
       <Layout>
-        <section className="movies-filters">
-          <h2>Filmes</h2>
+        <Switch>
+          <Route path='/:currentLocation'>
+            {(routeProps: any) => (
+              <MoviesList searchText={searchText} {...routeProps} />
+            )}
+          </Route>
 
-          {types.map(renderCheckbox)}
-        </section>
-
-        <List
-          items={movies}
-          label="Em cartaz"
-          renderListItem={renderMoviePoster}
-        />
+          <Route path='/'>
+            <Redirect to={`/${locationSlug}`} />
+          </Route>
+        </Switch>
       </Layout>
-    </>
+    </Router>
   )
 }
 
