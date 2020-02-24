@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 interface TextProps {
   children: React.ReactNode
   className?: string
-  style?: any
+  style?: CSSProperties
 }
 
 const Text: React.FC<TextProps> = ({

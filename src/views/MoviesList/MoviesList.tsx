@@ -1,4 +1,4 @@
-import { Checkbox, Heading, List } from 'components'
+import { Checkbox, Heading, List, Loading } from 'components'
 import React, { useEffect, useState } from 'react'
 import { Route, Switch, RouteComponentProps } from 'react-router-dom'
 import { filterTypesPresenter, moviesFilter } from 'utils'
@@ -21,7 +21,7 @@ const MoviesList: React.FC<MoviesListProps> = ({
     params: { currentLocation },
   } = match
 
-  const [movies, setMovies] = useState([]) as any
+  const [movies, setMovies] = useState<Array<Movie>>([])
   const [selected, setSelected] = useState([''])
 
   const getMovies = async () =>
@@ -38,8 +38,30 @@ const MoviesList: React.FC<MoviesListProps> = ({
   }, [currentLocation])
 
   if (movies.length === 0) {
-    return <p>Carregando...</p>
+    return <Loading />
   }
+
+  const handleCheckboxToggle = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    alias: string,
+  ) => {
+    if (e.target.checked) {
+      setSelected([...selected, alias])
+    } else {
+      setSelected(selected.filter(item => item !== alias))
+    }
+
+    return null
+  }
+
+  const renderCheckbox = (type: FilterType) => (
+    <Checkbox
+      checked={selected.some(item => item === type.alias)}
+      key={type.alias}
+      onChange={handleCheckboxToggle}
+      type={type}
+    />
+  )
 
   return (
     <Switch>
@@ -60,45 +82,21 @@ const MoviesList: React.FC<MoviesListProps> = ({
 
       <Route
         path='/:currentLocation'
-        render={(routeProps: any) => {
-          const handleCheckboxToggle = (
-            e: React.ChangeEvent<HTMLInputElement>,
-            alias: string,
-          ) => {
-            if (e.target.checked) {
-              setSelected([...selected, alias])
-            } else {
-              setSelected(selected.filter(item => item !== alias))
-            }
+        render={(routeProps: any) => (
+          <>
+            <section className='movies-filters'>
+              <Heading>Filmes</Heading>
 
-            return null
-          }
+              {filterTypesPresenter(movies).map(renderCheckbox)}
+            </section>
 
-          const renderCheckbox = (type: FilterType) => (
-            <Checkbox
-              checked={selected.some(item => item === type.alias)}
-              key={type.alias}
-              onChange={handleCheckboxToggle}
-              type={type}
+            <List
+              items={moviesFilter(movies, searchText, selected)}
+              label='Em cartaz'
+              {...routeProps}
             />
-          )
-
-          return (
-            <>
-              <section className='movies-filters'>
-                <Heading>Filmes</Heading>
-
-                {filterTypesPresenter(movies).map(renderCheckbox)}
-              </section>
-
-              <List
-                items={moviesFilter(movies, searchText, selected)}
-                label='Em cartaz'
-                {...routeProps}
-              />
-            </>
-          )
-        }}
+          </>
+        )}
       />
     </Switch>
   )
