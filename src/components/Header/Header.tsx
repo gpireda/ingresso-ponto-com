@@ -1,7 +1,7 @@
 import Local from 'icons/Local'
 import Logo from 'icons/Logo'
 import MagnifyingGlass from 'icons/MagnifyingGlass'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Text } from 'components'
 
@@ -21,41 +21,51 @@ const Header: React.FC<IHeaderProps> = ({
   onCurrentLocationToggle,
   onSearchChanged,
   searchText,
-}: IHeaderProps) => (
-  <header>
-    <div className={styles.headerWrapper}>
-      <Link className={styles.logoWrapper} to={`/${locationSlug}`}>
-        <Logo />
-      </Link>
+}: IHeaderProps) => {
+  const [isInputVisible, setInputVisible] = useState(false)
 
-      <div className={styles.searchAndLocalWrapper}>
-        <input
-          className={styles.searchInput}
-          value={searchText}
-          onChange={e => {
-            onSearchChanged(e.target.value)
-          }}
-          type='text'
-        />
-
-        <div className={styles.magnifyingGlassWrapper}>
-          <MagnifyingGlass />
-        </div>
-
-        <Link
-          onClick={onCurrentLocationToggle}
-          to={`/${
-            locationSlug === 'sao-paulo' ? 'rio-de-janeiro' : 'sao-paulo'
-          }`}
-        >
-          <Text className={styles.location}>{currentLocation}</Text>
-          <div className={styles.locationWrapper}>
-            <Local />
-          </div>
+  return (
+    <header>
+      <div className={styles.headerWrapper}>
+        <Link className={styles.logoWrapper} to={`/${locationSlug}`}>
+          <Logo showText={window.innerWidth > 768} />
         </Link>
+
+        <div className={styles.searchAndLocalWrapper}>
+          <input
+            className={`${styles.searchInput} ${
+              isInputVisible ? styles.showInput : ''
+            }`}
+            value={searchText}
+            onChange={e => {
+              onSearchChanged(e.target.value)
+            }}
+            placeholder='Digite o nome de um filme'
+            type='text'
+          />
+
+          <div
+            className={styles.magnifyingGlassWrapper}
+            onClick={() => setInputVisible(!isInputVisible)}
+          >
+            <MagnifyingGlass />
+          </div>
+
+          <Link
+            onClick={onCurrentLocationToggle}
+            to={`/${
+              locationSlug === 'sao-paulo' ? 'rio-de-janeiro' : 'sao-paulo'
+            }`}
+          >
+            <Text className={styles.location}>{currentLocation}</Text>
+            <div className={styles.locationWrapper}>
+              <Local />
+            </div>
+          </Link>
+        </div>
       </div>
-    </div>
-  </header>
-)
+    </header>
+  )
+}
 
 export default Header
