@@ -1,10 +1,11 @@
 .mainWrapper {
   max-width: var(--layout-width);
   margin: 0 auto;
+  padding: var(--spacing-small) 0;
 }
 
 @media (max-width: 768px) {
   .mainWrapper {
-    padding: 0 10px;
+    padding: 0 var(--spacing-small);
   }
 }

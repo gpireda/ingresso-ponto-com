@@ -11,7 +11,10 @@ const Text: React.FC<TextProps> = ({
   className,
   style,
 }: TextProps) => (
-  <span className={className} style={{ color: '#fff', ...style }}>
+  <span
+    className={className}
+    style={{ color: '#fff', display: 'inline-flex', ...style }}
+  >
     {children}
   </span>
 )

@@ -1,22 +1,14 @@
 import React from 'react'
 
+import styles from './Trailer.module.scss'
+
 interface TrailerProps {
   title: string
   url: string
 }
 
 const Trailer: React.FC<TrailerProps> = ({ title, url }: TrailerProps) => (
-  <iframe
-    allowFullScreen
-    src={url}
-    style={{
-      border: 'none',
-      height: '250px',
-      marginTop: '10px',
-      width: '100%',
-    }}
-    title={title}
-  />
+  <iframe allowFullScreen className={styles.trailer} src={url} title={title} />
 )
 
 export default Trailer

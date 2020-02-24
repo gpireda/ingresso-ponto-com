@@ -1,7 +1,7 @@
 .checkbox {
   cursor: pointer;
   display: inline-flex;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-small);
 
   label {
     display: inline-flex;
@@ -15,10 +15,10 @@
     }
 
     div {
-      width: 20px;
-      height: 20px;
+      width: var(--spacing-medium);
+      height: var(--spacing-medium);
       background: var(--color-white);
-      margin-right: 10px;
+      margin-right: var(--spacing-small);
       position: relative;
     }
 
@@ -40,7 +40,7 @@
     }
 
     span {
-      margin-right: 10px;
+      margin-right: var(--spacing-small);
     }
   }
 }

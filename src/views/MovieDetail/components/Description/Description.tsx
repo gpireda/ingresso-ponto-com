@@ -12,7 +12,7 @@ const Description: React.FC<DescriptionProps> = ({
   movie,
 }: DescriptionProps) => (
   <section className={styles.description}>
-    <Text style={{ color: '#fff', marginBottom: '10px' }}>{movie?.title}</Text>
+    <Text style={{ marginBottom: styles.spacingSmall }}>{movie.title}</Text>
 
     {movie.completeTags && (
       <div className={styles.tags}>
@@ -25,7 +25,9 @@ const Description: React.FC<DescriptionProps> = ({
     )}
 
     <div className={styles.synopsis}>
-      <Text style={{ fontSize: 12 }}>{movie.synopsis}</Text>
+      <Text style={{ fontSize: 12, lineHeight: '1.25em' }}>
+        {movie.synopsis}
+      </Text>
     </div>
   </section>
 )

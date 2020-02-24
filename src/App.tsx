@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  RouteChildrenProps,
   Switch,
 } from 'react-router-dom'
 import { slugify } from 'utils'

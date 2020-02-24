@@ -19,7 +19,7 @@ const MovieDetail: React.FC<IMovieDetailProps> = ({
       )}
 
       <div className={styles.movieDetailContainer}>
-        <MoviePoster movie={movie} width='250px' />
+        <MoviePoster movie={movie} />
 
         <Description movie={movie} />
       </div>

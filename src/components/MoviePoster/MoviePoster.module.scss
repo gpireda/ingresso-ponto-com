@@ -1,73 +1,70 @@
 .picture {
-  cursor: pointer;
+  width: 100%;
   position: relative;
   overflow: hidden !important;
-  margin-top: 20px;
+  margin-top: var(--spacing-medium);
   margin-right: 4px;
 
-  .static {
-    cursor: initial;
-    transition: none;
-
-    &:hover {
-      transform: scale(1);
-    }
-  }
-
   a {
+    display: inline-flex;
+
     img {
-      transition-property: transform;
-      transition-duration: 0.6s;
-      transform-origin: center 297px;
-
-      &:hover {
-        transform: scale(1.2);
-        overflow: hidden !important;
-      }
-    }
-
-    .tagsContainer {
-      display: flex;
-      flex-direction: column;
-      color: var(--color-white);
-      text-transform: uppercase;
-      position: absolute;
-      bottom: 50px;
-      left: var(--spacing-small);
-
-      .tag {
-        color: var(--color-white);
-        font-size: 13;
-        font-weight: 400;
-        padding: var(--spacing-smallest);
-        width: fit-content;
-
-        // &.family {
-        //   background: var(--color-light-green);
-        // }
-
-        // &.highlight {
-        //   background: var(--color-orange);
-        // }
-      }
+      width: 100%;
     }
   }
-
-
 }
 
-@media (max-width: 768px) {
-  picture {
-    max-width: 100%;
+@media (min-width: 768px) {
+  .picture {
+    cursor: pointer;
+    max-width: 200px;
+
+    .static {
+      cursor: initial;
+      transition: none;
+
+      &:hover {
+        transform: scale(1);
+      }
+    }
 
     a {
-      display: inline-flex;
-
       img {
-        width: 100%;
+        transition-property: transform;
+        transition-duration: 0.6s;
+        transform-origin: center 297px;
+
+        &:hover {
+          transform: scale(1.2);
+          overflow: hidden !important;
+        }
+      }
+
+      .tagsContainer {
+        display: flex;
+        flex-direction: column;
+        color: var(--color-white);
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 50px;
+        left: var(--spacing-small);
+
+        .tag {
+          color: var(--color-white);
+          font-size: 13;
+          font-weight: 400;
+          padding: var(--spacing-smallest);
+          width: fit-content;
+
+          // &.family {
+          //   background: var(--color-light-green);
+          // }
+
+          // &.highlight {
+          //   background: var(--color-orange);
+          // }
+        }
       }
     }
   }
-
-
 }

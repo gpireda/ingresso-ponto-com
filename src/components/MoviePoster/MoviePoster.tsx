@@ -8,7 +8,6 @@ interface IMoviePosterProps {
   children?: React.ReactNode
   link?: string
   movie: Event
-  width?: string
 }
 
 const renderTags = (movie: Event) => (
@@ -25,7 +24,7 @@ const renderTags = (movie: Event) => (
   </div>
 )
 
-const renderBanner = (showTags: boolean, movie: Event, width = '200px') => {
+const renderBanner = (showTags: boolean, movie: Event) => {
   const hasTags = movie.completeTags?.length > 0
   const shouldRenderTags = showTags && hasTags
 
@@ -35,7 +34,6 @@ const renderBanner = (showTags: boolean, movie: Event, width = '200px') => {
         className={!showTags ? styles.static : ''}
         src={movie.images[0].url}
         alt={movie.title}
-        width={width}
       />
       {shouldRenderTags && renderTags(movie)}
     </React.Fragment>
@@ -46,10 +44,9 @@ const MoviePoster: React.FC<IMoviePosterProps> = ({
   children,
   link,
   movie,
-  width = '200px',
 }: IMoviePosterProps) => (
-  <picture className={styles.picture} style={{ width }} key={movie.id}>
-    <Link to={link || '#'}>{renderBanner(!!children, movie, width)}</Link>
+  <picture className={styles.picture} key={movie.id}>
+    <Link to={link || '#'}>{renderBanner(!!children, movie)}</Link>
 
     {children}
   </picture>
