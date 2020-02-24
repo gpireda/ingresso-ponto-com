@@ -1,0 +1,21 @@
+.description {
+  margin-left: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+
+  .tags {
+    display: flex;
+    flex-direction: row;
+
+    span {
+      margin-right: 10px;
+    }
+  }
+
+  .synopsis {
+    margin-top: 10px;
+
+  }
+}

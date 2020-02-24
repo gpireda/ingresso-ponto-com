@@ -3,12 +3,12 @@ import filterTypes from './filterTypes'
 const removeWhiteSpaces = (text: string) => text.replace(/\W/g, '')
 
 const moviesFilter = (
-  movies: any,
+  movies: Array<Movie>,
   searchText: string,
   selected: Array<string>,
 ) =>
   movies
-    .filter((movie: any) => {
+    .filter((movie: Movie) => {
       if (!searchText) {
         return movie.event
       }
@@ -21,7 +21,7 @@ const moviesFilter = (
         return movie.event
       }
     })
-    .filter((movie: any) => {
+    .filter((movie: Movie) => {
       // tem erro aqui: não está considerando todos os tipos
       if (selected.length === 1) {
         return movie

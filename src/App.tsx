@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
+  RouteChildrenProps,
   Switch,
 } from 'react-router-dom'
 import { slugify } from 'utils'
@@ -12,7 +13,7 @@ import { MoviesList } from 'views'
 
 import { Header, Layout } from './components'
 
-const App = () => {
+const App: React.FC = () => {
   const [currentLocation, setStateLocation] = useState('São Paulo')
   const [searchText, setSearchText] = useState('')
 

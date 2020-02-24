@@ -1,10 +1,18 @@
 .picture {
   cursor: pointer;
-  max-width: 200px;
   position: relative;
   overflow: hidden !important;
   margin-top: 20px;
   margin-right: 4px;
+
+  .static {
+    cursor: initial;
+    transition: none;
+
+    &:hover {
+      transform: scale(1);
+    }
+  }
 
   a {
     img {
@@ -45,10 +53,7 @@
     }
   }
 
-  .figcaption {
-    color: var(--color-white);
-    margin-top: var(--spacing-small);
-  }
+
 }
 
 @media (max-width: 768px) {
@@ -64,7 +69,5 @@
     }
   }
 
-  .figcaption {
-    margin: var(--spacing-small) 0;
-  }
+
 }

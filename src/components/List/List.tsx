@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './List.module.scss'
 
 interface IListProps {
-  items: any
+  items: Array<Movie>
   label: string
   match: {
     url: string
@@ -12,13 +12,15 @@ interface IListProps {
 }
 
 const List: React.FC<IListProps> = ({ items, label, match }: IListProps) => {
-  const renderMoviePoster = (movie: any) => (
+  const renderMoviePoster = (movie: Movie) => (
     <MoviePoster
       key={movie.event.id}
       // eslint-disable-next-line react/prop-types
       link={`${match.url}/filme/${movie.event.urlKey}`}
       movie={movie.event}
-    />
+    >
+      <figcaption className={styles.figcaption}>{movie.event.title}</figcaption>
+    </MoviePoster>
   )
 
   return (

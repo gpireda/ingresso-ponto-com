@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { Text, Trailer } from 'components'
+import { MoviePoster, Trailer } from 'components'
+import { Description } from './components'
 
 import styles from './MovieDetail.module.scss'
 
 interface IMovieDetailProps {
-  movie: any
+  movie: Event
 }
 
 const MovieDetail: React.FC<IMovieDetailProps> = ({
@@ -14,33 +15,13 @@ const MovieDetail: React.FC<IMovieDetailProps> = ({
   return (
     <>
       {movie.trailers.length > 0 && (
-        <Trailer url={movie.trailers[0].embeddedUrl} />
+        <Trailer title={movie.title} url={movie.trailers[0].embeddedUrl} />
       )}
 
       <div className={styles.movieDetailContainer}>
-        <picture>
-          <img src={movie.images[0].url} alt={movie.title} width='250px' />
-        </picture>
+        <MoviePoster movie={movie} width='250px' />
 
-        <section className={styles.description}>
-          <Text style={{ color: '#fff', marginBottom: '10px' }}>
-            {movie?.title}
-          </Text>
-
-          {movie.completeTags && (
-            <div className={styles.tags}>
-              {movie.completeTags.map((tag: any) => (
-                <span key={tag.name} style={{ color: tag.color || '#fff' }}>
-                  {tag.name}
-                </span>
-              ))}
-            </div>
-          )}
-
-          <div className={styles.synopsis}>
-            <Text style={{ fontSize: 12 }}>{movie.synopsis}</Text>
-          </div>
-        </section>
+        <Description movie={movie} />
       </div>
     </>
   )

@@ -49,7 +49,7 @@ const MoviesList: React.FC<MoviesListProps> = ({
           <MovieDetail
             movie={
               movies.find(
-                (movie: any) =>
+                (movie: Movie) =>
                   movie.event.urlKey === routeProps.match.params.movie,
               )?.event
             }
@@ -67,10 +67,10 @@ const MoviesList: React.FC<MoviesListProps> = ({
           ) => {
             if (e.target.checked) {
               setSelected([...selected, alias])
-              return null
+            } else {
+              setSelected(selected.filter(item => item !== alias))
             }
 
-            setSelected(selected.filter(item => item !== alias))
             return null
           }
 

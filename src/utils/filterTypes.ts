@@ -1,4 +1,4 @@
-const filterTypes = (showtimes: any) =>
+const filterTypes = (showtimes: Array<ShowTime>) =>
   showtimes
     .flat()
     .map(({ rooms }: any) => rooms)

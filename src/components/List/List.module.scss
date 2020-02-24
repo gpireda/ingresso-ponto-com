@@ -14,10 +14,19 @@
 .listContainer {
   display: flex;
   flex-wrap: wrap;
+
+  .figcaption {
+    color: var(--color-white);
+    margin-top: var(--spacing-small);
+  }
 }
 
 @media (max-width: 768px) {
   .listContainer {
     flex-direction: column;
+
+    .figcaption {
+      margin: var(--spacing-small) 0;
+    }
   }
 }

@@ -1,10 +1,11 @@
 import React from 'react'
 
 interface TrailerProps {
+  title: string
   url: string
 }
 
-const Trailer: React.FC<TrailerProps> = ({ url }: TrailerProps) => (
+const Trailer: React.FC<TrailerProps> = ({ title, url }: TrailerProps) => (
   <iframe
     allowFullScreen
     src={url}
@@ -14,6 +15,7 @@ const Trailer: React.FC<TrailerProps> = ({ url }: TrailerProps) => (
       marginTop: '10px',
       width: '100%',
     }}
+    title={title}
   />
 )
 
