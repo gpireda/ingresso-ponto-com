@@ -7,7 +7,7 @@ import styles from './MovieDetail.module.scss'
 import { Redirect } from 'react-router-dom'
 
 interface MovieDetailProps {
-  movie?: Event
+  movie?: MovieEvent
 }
 
 const MovieDetail: React.FC<MovieDetailProps> = ({

@@ -5,7 +5,7 @@ import { Text } from 'components'
 import styles from './Description.module.scss'
 
 interface DescriptionProps {
-  movie: Event
+  movie: MovieEvent
 }
 
 const Description: React.FC<DescriptionProps> = ({

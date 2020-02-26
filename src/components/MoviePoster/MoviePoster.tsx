@@ -7,10 +7,10 @@ import styles from './MoviePoster.module.scss'
 interface MoviePosterProps {
   children?: React.ReactNode
   link?: string
-  movie: Event
+  movie: MovieEvent
 }
 
-const renderTags = (movie: Event) => (
+const renderTags = (movie: MovieEvent) => (
   <div className={styles.tagsContainer}>
     {movie.completeTags.map((tag: CompleteTag) => (
       <Text
@@ -24,7 +24,7 @@ const renderTags = (movie: Event) => (
   </div>
 )
 
-const renderBanner = (showTags: boolean, movie: Event) => {
+const renderBanner = (showTags: boolean, movie: MovieEvent) => {
   const hasTags = movie.completeTags?.length > 0
 
   return (

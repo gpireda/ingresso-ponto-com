@@ -1,4 +1,4 @@
-interface Event {
+interface MovieEvent {
   completeTags: Array<CompleteTag>
   id: number
   images: Array<MovieThumbnail>

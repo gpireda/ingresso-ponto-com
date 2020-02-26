@@ -1,4 +1,4 @@
 interface Movie {
-  event: Event
+  event: MovieEvent
   showtimes: Array<ShowTime>
 }
