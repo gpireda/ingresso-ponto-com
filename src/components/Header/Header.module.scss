@@ -26,10 +26,10 @@ header {
 
       .searchInput {
         display: none;
-        height: 24px;
-        border-radius: 4px;
+        height: var(--spacing-medium);
+        border-radius: var(--spacing-smallest);
         outline: none;
-        text-indent: 4px;
+        text-indent: var(--spacing-smallest);
 
         &.showInput {
           display: initial;
@@ -71,22 +71,13 @@ header {
 
         .searchInput {
           display: initial;
-          height: 24px;
-          border-radius: 4px;
-          outline: none;
-          text-indent: 4px;
 
           &.showInput {
             position: relative;
             top: 0;
             width: auto;
-            height: 24px;
+            height: var(--spacing-medium);
           }
-        }
-
-        .magnifyingGlassWrapper {
-          cursor: pointer;
-          width: var(--spacing-large);
         }
       }
     }

@@ -1,3 +1,12 @@
+.listContainer {
+  display: flex;
+  flex-direction: column;
+
+  .figcaption {
+    margin: var(--spacing-small) 0;
+  }
+}
+
 .label {
   color: var(--color-orange);
   border-bottom: 1px solid var(--color-white);
@@ -11,22 +20,15 @@
   }
 }
 
-.listContainer {
-  display: flex;
-  flex-wrap: wrap;
-
-  .figcaption {
-    color: var(--color-white);
-    margin-top: var(--spacing-small);
-  }
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .listContainer {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
     .figcaption {
-      margin: var(--spacing-small) 0;
+      color: var(--color-white);
+      margin-top: var(--spacing-small);
     }
   }
 }

@@ -1,7 +1,8 @@
 :root {
   --spacing-small: 10px;
-  --spacing-medium: 20px;
-  --spacing-smallest: 6px;
+  --spacing-medium: 24px;
+  --spacing-smallest: 4px;
   --spacing-large: 36px;
+
   --layout-width: 1024px;
 }

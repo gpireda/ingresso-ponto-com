@@ -5,12 +5,12 @@ import { client } from 'utils/client'
 const useMovies = ({ cityId }: { cityId: string }) => {
   const [movies, setMovies] = useState<Array<Movie>>([])
 
-  const getMovies = async () =>
-    client.getEventsAndShowTimes({
-      id: cityId,
-    })
-
   useEffect(() => {
+    const getMovies = async () =>
+      client.getEventsAndShowTimes({
+        id: cityId,
+      })
+
     getMovies().then(setMovies)
 
     return () => {
