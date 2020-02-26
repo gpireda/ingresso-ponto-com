@@ -1,6 +1,37 @@
 import filterTypes from './filterTypes'
 
-const removeWhiteSpaces = (text: string) => text.replace(/\W/g, '')
+import { removeWhiteSpaces } from './'
+
+const filterBySearchText = (movie: Movie, searchText: string) => {
+  if (!searchText) {
+    return movie.event
+  }
+
+  const normalizedEventTitle = movie.event.title.toLowerCase()
+  const normalizedSearchText = searchText.toLowerCase()
+
+  if (
+    removeWhiteSpaces(normalizedEventTitle).includes(
+      removeWhiteSpaces(normalizedSearchText),
+    )
+  ) {
+    return movie.event
+  }
+}
+
+const filterByCheckbox = (movie: Movie, selected: Array<string>) => {
+  if (selected.length === 1) {
+    return movie
+  }
+
+  const types = filterTypes(
+    movie.showtimes,
+  ).filter(({ alias }: { alias: string }) => selected.includes(alias))
+
+  if (types.length >= 1) {
+    return movie
+  }
+}
 
 const moviesFilter = (
   movies: Array<Movie>,
@@ -8,32 +39,7 @@ const moviesFilter = (
   selected: Array<string>,
 ) =>
   movies
-    .filter((movie: Movie) => {
-      if (!searchText) {
-        return movie.event
-      }
-
-      if (
-        removeWhiteSpaces(movie.event.title.toLowerCase()).includes(
-          removeWhiteSpaces(searchText.toLowerCase()),
-        )
-      ) {
-        return movie.event
-      }
-    })
-    .filter((movie: Movie) => {
-      // tem erro aqui: não está considerando todos os tipos
-      if (selected.length === 1) {
-        return movie
-      }
-
-      const types = filterTypes(movie.showtimes).filter(({ alias }: any) =>
-        selected.includes(alias),
-      )
-
-      if (types.length > 1) {
-        return movie
-      }
-    })
+    .filter((movie: Movie) => filterBySearchText(movie, searchText))
+    .filter((movie: Movie) => filterByCheckbox(movie, selected))
 
 export default moviesFilter
