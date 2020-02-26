@@ -4,6 +4,7 @@ import { MoviePoster, Trailer } from 'components'
 import { Description } from './components'
 
 import styles from './MovieDetail.module.scss'
+import { Redirect } from 'react-router-dom'
 
 interface IMovieDetailProps {
   movie: Event
@@ -12,6 +13,10 @@ interface IMovieDetailProps {
 const MovieDetail: React.FC<IMovieDetailProps> = ({
   movie,
 }: IMovieDetailProps) => {
+  if (!movie) {
+    return <Redirect to='/' />
+  }
+
   return (
     <>
       {movie.trailers.length > 0 && (
