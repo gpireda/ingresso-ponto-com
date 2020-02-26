@@ -26,7 +26,6 @@ const renderTags = (movie: Event) => (
 
 const renderBanner = (showTags: boolean, movie: Event) => {
   const hasTags = movie.completeTags?.length > 0
-  const shouldRenderTags = showTags && hasTags
 
   return (
     <React.Fragment key={movie.id}>
@@ -35,7 +34,7 @@ const renderBanner = (showTags: boolean, movie: Event) => {
         src={movie.images[0].url}
         alt={movie.title}
       />
-      {shouldRenderTags && renderTags(movie)}
+      {hasTags && renderTags(movie)}
     </React.Fragment>
   )
 }
