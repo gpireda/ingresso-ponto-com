@@ -6,13 +6,13 @@ import { Description } from './components'
 import styles from './MovieDetail.module.scss'
 import { Redirect } from 'react-router-dom'
 
-interface IMovieDetailProps {
-  movie: Event
+interface MovieDetailProps {
+  movie?: Event
 }
 
-const MovieDetail: React.FC<IMovieDetailProps> = ({
+const MovieDetail: React.FC<MovieDetailProps> = ({
   movie,
-}: IMovieDetailProps) => {
+}: MovieDetailProps) => {
   if (!movie) {
     return <Redirect to='/' />
   }

@@ -1,0 +1,3 @@
+interface MovieDetailRouteProps {
+  movie: string
+}

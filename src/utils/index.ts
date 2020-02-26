@@ -1,3 +1,4 @@
+export { default as client } from './client'
 export { default as filterTypes } from './filterTypes'
 export { default as filterTypesPresenter } from './filterTypesPresenter'
 export { default as moviesFilter } from './moviesFilter'

@@ -25,7 +25,7 @@ const Description: React.FC<DescriptionProps> = ({
     )}
 
     <div className={styles.synopsis}>
-      <Text style={{ fontSize: 12, lineHeight: '1.25em' }}>
+      <Text style={{ fontSize: 12, lineHeight: '1.5em' }}>
         {movie.synopsis}
       </Text>
     </div>

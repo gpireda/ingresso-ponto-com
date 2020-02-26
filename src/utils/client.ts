@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import axios, { AxiosInstance } from 'axios'
 
 const getPath = (id: string) => {
@@ -25,6 +24,4 @@ class Client {
   }
 }
 
-const client = new Client({})
-
-export { client }
+export default new Client({})

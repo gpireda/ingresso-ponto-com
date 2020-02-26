@@ -6,6 +6,7 @@ import {
   Redirect,
   Route,
   Switch,
+  RouteComponentProps,
 } from 'react-router-dom'
 import { slugify } from 'utils'
 import { MoviesList } from 'views'
@@ -35,7 +36,7 @@ const App: React.FC = () => {
       <Layout>
         <Switch>
           <Route path='/:currentLocation'>
-            {(routeProps: any) => (
+            {(routeProps: RouteComponentProps<MoviesListRouteProps>) => (
               <MoviesList searchText={searchText} {...routeProps} />
             )}
           </Route>

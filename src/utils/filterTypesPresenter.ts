@@ -7,7 +7,7 @@ const filterTypesPresenter = (movies: Array<any>) => {
     movies.map(({ showtimes }) => showtimes),
   ).filter(({ display }: { display: boolean }) => display)
 
-  return uniqBy(validFilterTypes, ({ alias }: any) => alias)
+  return uniqBy(validFilterTypes, ({ alias }: { alias: string }) => alias)
 }
 
 export default filterTypesPresenter

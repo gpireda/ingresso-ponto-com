@@ -5,22 +5,20 @@ import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import { filterTypesPresenter, moviesFilter } from 'utils'
 import MovieDetail from 'views/MovieDetail/MovieDetail'
 
-interface MoviesListRouteProps {
+interface CurrentLocation {
   currentLocation: string
 }
 
-interface MoviesListProps extends RouteComponentProps<MoviesListRouteProps> {
+interface MoviesListProps extends RouteComponentProps<CurrentLocation> {
   searchText: string
 }
 
 const MoviesList: React.FC<MoviesListProps> = ({
-  match,
+  match: {
+    params: { currentLocation },
+  },
   searchText,
 }: MoviesListProps) => {
-  const {
-    params: { currentLocation },
-  } = match
-
   const { movies } = useMovies({
     cityId: currentLocation === 'sao-paulo' ? '1' : '2',
   })
@@ -39,7 +37,9 @@ const MoviesList: React.FC<MoviesListProps> = ({
     />
   )
 
-  const renderMoviesList = (routeProps: any) => (
+  const renderMoviesList = (
+    routeProps: RouteComponentProps<MoviesListRouteProps>,
+  ) => (
     <>
       <section className='movies-filters'>
         <Heading>Filmes</Heading>
@@ -55,7 +55,9 @@ const MoviesList: React.FC<MoviesListProps> = ({
     </>
   )
 
-  const renderMovieDetail = (routeProps: any) => (
+  const renderMovieDetail = (
+    routeProps: RouteComponentProps<MovieDetailRouteProps>,
+  ) => (
     <MovieDetail
       movie={
         movies.find(

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { client } from 'utils/client'
+import { client } from 'utils'
 
 const useMovies = ({ cityId }: { cityId: string }) => {
   const [movies, setMovies] = useState<Array<Movie>>([])

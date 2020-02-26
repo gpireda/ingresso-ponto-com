@@ -20,9 +20,9 @@ header {
       color: var(--color-white);
       display: inline-flex;
       align-items: center;
-      min-width: 45%;
+      min-width: 50%;
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-end;
 
       .searchInput {
         display: none;
@@ -42,6 +42,7 @@ header {
       }
 
       .magnifyingGlassWrapper {
+        margin-left: var(--spacing-small);
         width: var(--spacing-large);
       }
 
@@ -50,6 +51,7 @@ header {
         align-items: center;
         text-decoration: none;
         color: var(--color-white);
+        margin-left: var(--spacing-small);
 
         .locationWrapper {
           width: var(--spacing-large);

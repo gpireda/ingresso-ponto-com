@@ -2,17 +2,17 @@ import React from 'react'
 import { Text } from 'components'
 import styles from './Checkbox.module.scss'
 
-interface ICheckboxProps {
+interface CheckboxProps {
   checked: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>, alias: string) => null
   type: FilterType
 }
 
-const Checkbox: React.FC<ICheckboxProps> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   onChange,
   type,
-}: ICheckboxProps) => (
+}: CheckboxProps) => (
   <span className={styles.checkbox} key={type.id}>
     <label>
       <input

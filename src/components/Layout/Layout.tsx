@@ -2,11 +2,11 @@ import React from 'react'
 
 import styles from './Layout.module.scss'
 
-interface ILayoutProps {
+interface LayoutProps {
   children: React.ReactNode
 }
 
-const Layout: React.FC<ILayoutProps> = ({ children }: ILayoutProps) => (
+const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => (
   <div className={styles.mainWrapper}>{children}</div>
 )
 

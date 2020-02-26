@@ -1,11 +1,11 @@
 const filterTypes = (showtimes: Array<ShowTime>) =>
   showtimes
     .flat()
-    .map(({ rooms }: any) => rooms)
+    .map(({ rooms }: { rooms: Array<Room> }) => rooms)
     .flat()
-    .map(({ sessions }: any) => sessions)
+    .map(({ sessions }: { sessions: Array<Session> }) => sessions)
     .flat()
-    .map(({ types }: any) => types)
+    .map(({ types }: { types: Array<SessionType> }) => types)
     .flat()
 
 export default filterTypes

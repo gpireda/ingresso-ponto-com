@@ -7,7 +7,7 @@ import { Text } from 'components'
 
 import styles from './Header.module.scss'
 
-interface IHeaderProps {
+interface HeaderProps {
   currentLocation?: string
   locationSlug: string
   onCurrentLocationToggle: () => void
@@ -15,13 +15,13 @@ interface IHeaderProps {
   searchText: string
 }
 
-const Header: React.FC<IHeaderProps> = ({
+const Header: React.FC<HeaderProps> = ({
   currentLocation,
   locationSlug,
   onCurrentLocationToggle,
   onSearchChanged,
   searchText,
-}: IHeaderProps) => {
+}: HeaderProps) => {
   const [isInputVisible, setInputVisible] = useState(false)
 
   return (

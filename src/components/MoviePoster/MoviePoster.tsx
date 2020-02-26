@@ -4,7 +4,7 @@ import { Text } from 'components'
 
 import styles from './MoviePoster.module.scss'
 
-interface IMoviePosterProps {
+interface MoviePosterProps {
   children?: React.ReactNode
   link?: string
   movie: Event
@@ -39,11 +39,11 @@ const renderBanner = (showTags: boolean, movie: Event) => {
   )
 }
 
-const MoviePoster: React.FC<IMoviePosterProps> = ({
+const MoviePoster: React.FC<MoviePosterProps> = ({
   children,
   link,
   movie,
-}: IMoviePosterProps) => (
+}: MoviePosterProps) => (
   <picture className={styles.picture} key={movie.id}>
     <Link to={link || '#'}>{renderBanner(!!children, movie)}</Link>
 

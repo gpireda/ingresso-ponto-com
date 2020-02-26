@@ -1,0 +1,3 @@
+interface MoviesListRouteProps {
+  currentLocation: string
+}
