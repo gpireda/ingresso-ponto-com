@@ -1,8 +1,8 @@
 import { Checkbox, Heading, List, Loading } from 'components'
-import React, { useEffect, useState } from 'react'
-import { Route, Switch, RouteComponentProps } from 'react-router-dom'
+import { useCheckbox, useMovies } from 'hooks'
+import React from 'react'
+import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import { filterTypesPresenter, moviesFilter } from 'utils'
-import { client } from 'utils/client'
 import MovieDetail from 'views/MovieDetail/MovieDetail'
 
 interface MoviesListRouteProps {
@@ -21,37 +21,13 @@ const MoviesList: React.FC<MoviesListProps> = ({
     params: { currentLocation },
   } = match
 
-  const [movies, setMovies] = useState<Array<Movie>>([])
-  const [selected, setSelected] = useState([''])
-
-  const getMovies = async () =>
-    client.getEventsAndShowTimes({
-      id: currentLocation === 'sao-paulo' ? '1' : '2',
-    })
-
-  useEffect(() => {
-    if (movies.length > 0) {
-      setMovies([])
-    }
-
-    getMovies().then(setMovies)
-  }, [currentLocation])
+  const { movies } = useMovies({
+    cityId: currentLocation === 'sao-paulo' ? '1' : '2',
+  })
+  const { handleCheckboxToggle, selected } = useCheckbox()
 
   if (movies.length === 0) {
     return <Loading />
-  }
-
-  const handleCheckboxToggle = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    alias: string,
-  ) => {
-    if (e.target.checked) {
-      setSelected([...selected, alias])
-    } else {
-      setSelected(selected.filter(item => item !== alias))
-    }
-
-    return null
   }
 
   const renderCheckbox = (type: FilterType) => (
@@ -63,41 +39,39 @@ const MoviesList: React.FC<MoviesListProps> = ({
     />
   )
 
+  const renderMoviesList = (routeProps: any) => (
+    <>
+      <section className='movies-filters'>
+        <Heading>Filmes</Heading>
+
+        {filterTypesPresenter(movies).map(renderCheckbox)}
+      </section>
+
+      <List
+        items={moviesFilter(movies, searchText, selected)}
+        label='Em cartaz'
+        {...routeProps}
+      />
+    </>
+  )
+
+  const renderMovieDetail = (routeProps: any) => (
+    <MovieDetail
+      movie={
+        movies.find(
+          (movie: Movie) =>
+            movie.event.urlKey === routeProps.match.params.movie,
+        )?.event
+      }
+      {...routeProps}
+    />
+  )
+
   return (
     <Switch>
-      <Route
-        path='/:currentLocation/filme/:movie'
-        render={(routeProps: any) => (
-          <MovieDetail
-            movie={
-              movies.find(
-                (movie: Movie) =>
-                  movie.event.urlKey === routeProps.match.params.movie,
-              )?.event
-            }
-            {...routeProps}
-          />
-        )}
-      />
+      <Route path='/:currentLocation/filme/:movie' render={renderMovieDetail} />
 
-      <Route
-        path='/:currentLocation'
-        render={(routeProps: any) => (
-          <>
-            <section className='movies-filters'>
-              <Heading>Filmes</Heading>
-
-              {filterTypesPresenter(movies).map(renderCheckbox)}
-            </section>
-
-            <List
-              items={moviesFilter(movies, searchText, selected)}
-              label='Em cartaz'
-              {...routeProps}
-            />
-          </>
-        )}
-      />
+      <Route path='/:currentLocation' render={renderMoviesList} />
     </Switch>
   )
 }
